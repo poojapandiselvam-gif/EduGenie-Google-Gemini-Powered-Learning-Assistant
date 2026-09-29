@@ -1,0 +1,270 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EduGenie AI</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 700px;
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            color: #5b3cc4;
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 130px;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 12px;
+            resize: none;
+            font-size: 16px;
+            outline: none;
+        }
+
+        textarea:focus {
+            border-color: #667eea;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 13px 30px;
+            border: none;
+            border-radius: 10px;
+            background: #667eea;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #5139c6;
+            transform: translateY(-2px);
+        }
+
+        .answer-box {
+            margin-top: 25px;
+            padding: 20px;
+            background: #f5f3ff;
+            border-left: 5px solid #667eea;
+            border-radius: 10px;
+            text-align: left;
+            display: none;
+        }
+
+        .answer-box h3 {
+            color: #5b3cc4;
+            margin-bottom: 10px;
+        }
+
+        #answer {
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .footer {
+            margin-top: 25px;
+            color: #999;
+            font-size: 13px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="logo">🤖</div>
+
+        <h1>EduGenie AI</h1>
+
+        <p class="subtitle">
+            Ask your question and get an answer instantly!
+        </p>
+
+        <textarea
+            id="question"
+            placeholder="Type your question here...">
+        </textarea>
+
+        <br>
+
+        <button onclick="getAnswer()">
+            Get Answer 🚀
+        </button>
+
+        <div class="answer-box" id="answerBox">
+            <h3>💡 Answer</h3>
+            <p id="answer"></p>
+        </div>
+
+        <div class="footer">
+            © 2026 EduGenie AI
+        </div>
+
+    </div>
+
+
+    <script>
+
+        // Questions and Answers
+        const questions = {
+
+            "what is html":
+                "HTML stands for HyperText Markup Language. It is used to create the structure of web pages.",
+
+            "what is css":
+                "CSS stands for Cascading Style Sheets. It is used to style and design web pages.",
+
+            "what is javascript":
+                "JavaScript is a programming language used to make websites interactive and dynamic.",
+
+            "what is ai":
+                "AI stands for Artificial Intelligence. It enables computers to perform tasks that normally require human intelligence.",
+
+            "what is computer":
+                "A computer is an electronic device that processes data and performs calculations according to instructions.",
+
+            "what is python":
+                "Python is a high-level, beginner-friendly programming language widely used in web development, AI, data science and automation.",
+
+            "what is database":
+            "A database is an organized collection of data that can be stored, managed and retrieved efficiently."
+
+        };
+
+
+
+        function getAnswer() {
+
+            let question =
+                document.getElementById("question").value
+                .toLowerCase()
+                .trim();
+
+            let answerBox =
+                document.getElementById("answerBox");
+
+            let answer =
+                document.getElementById("answer");
+
+
+            if (question === "") {
+
+                answer.innerText =
+                    "Please enter a question.";
+
+                answerBox.style.display = "block";
+
+                return;
+            }
+
+
+            // Exact question match
+            if (questions[question]) {
+
+                answer.innerText =
+                    questions[question];
+
+            } else {
+
+                // Keyword based answers
+
+                if (question.includes("html")) {
+
+                    answer.innerText =
+                        questions["what is html"];
+
+                }
+
+                else if (question.includes("css")) {
+
+                    answer.innerText =
+                        questions["what is css"];
+
+                }
+
+                else if (question.includes("javascript")) {
+
+                    answer.innerText =
+                        questions["what is javascript"];
+
+                }
+
+                else if (question.includes("ai")) {
+
+                    answer.innerText =
+                        questions["what is ai"];
+
+                }
+
+                else if (question.includes("python")) {
+
+                    answer.innerText =
+                        questions["what is python"];
+
+                }
+
+                else if (question.includes("computer")) {
+
+                    answer.innerText =
+                        questions["what is computer"];
+
+                }
+
+                else {
+
+                    answer.innerText =
+                        "Sorry! I don't know the answer to this question. Please try another question.";
+
+                }
+            }
+
+
+            answerBox.style.display = "block";
+        }
+
+    </script>
+
+</body>
+</html>
